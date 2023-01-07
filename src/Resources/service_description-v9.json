@@ -1413,12 +1413,92 @@
                 "name": "Modify Channel",
                 "method": "PATCH",
                 "url": "/channels/{channel.id}",
-                "description": "channel",
+                "description": "Update a channels settings. Requires the MANAGE_CHANNELS permission for the guild.  Fires a Channel Update Gateway event. If modifying a category, individual Channel Update events will fire for each child channel that also changes. For the PATCH method, all the JSON Params are optional.",
+                "responseNote": "Returns a channel on success, and a 400 BAD REQUEST on invalid parameters.",
+                "responseTypes": [
+                    {
+                        "name": "channel",
+                        "type": "channel/channel"
+                    }
+                ],
                 "parameters": {
                     "channel.id": {
                         "type": "snowflake",
                         "location": "uri",
                         "required": true
+                    },
+                    "name": {
+                        "location": "json",
+                        "type": "string",
+                        "description": "2-100 character channel name",
+                        "extra": {
+                            "Channel Type": "All"
+                        }
+                    },
+                    "position": {
+                        "location": "json",
+                        "type": "integer",
+                        "description": "the position of the channel in the left-hand listing",
+                        "extra": {
+                            "Channel Type": "All"
+                        }
+                    },
+                    "topic": {
+                        "location": "json",
+                        "type": "string",
+                        "description": "0-1024 character channel topic",
+                        "extra": {
+                            "Channel Type": "Text"
+                        }
+                    },
+                    "nsfw": {
+                        "location": "json",
+                        "type": "boolean",
+                        "description": "whether the channel is nsfw",
+                        "default": false,
+                        "extra": {
+                            "Channel Type": "Text"
+                        }
+                    },
+                    "rate_limit_per_user": {
+                        "location": "json",
+                        "type": "integer",
+                        "description": "amount of seconds a user has to wait before sending another message (0-21600); bots, as well as users with the permission manage_messages or manage_channel, are unaffected",
+                        "extra": {
+                            "Channel Type": "Text"
+                        }
+                    },
+                    "bitrate": {
+                        "location": "json",
+                        "type": "integer",
+                        "description": "the bitrate (in bits) of the voice channel; 8000 to 96000 (128000 for VIP servers)",
+                        "extra": {
+                            "Channel Type": "Voice"
+                        }
+                    },
+                    "user_limit": {
+                        "location": "json",
+                        "type": "integer",
+                        "description": "the user limit of the voice channel; 0 refers to no limit, 1 to 99 refers to a user limit",
+                        "extra": {
+                            "Channel Type": "Voice"
+                        }
+                    },
+                    "permission_overwrites": {
+                        "location": "json",
+                        "type": "array",
+                        "description": "channel or category-specific permissions",
+                        "extra": {
+                            "Channel Type": "All"
+                        }
+                    },
+                    "parent_id": {
+                        "location": "json",
+                        "type": "snowflake",
+                        "description": "id of the new parent category for a channel",
+                        "extra": {
+                            "Channel Type": "Text, Voice"
+                        }
                     }
                 },
                 "parametersArray": false
