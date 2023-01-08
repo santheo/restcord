@@ -267,7 +267,14 @@
                 "name": "Get Guild Channels",
                 "method": "GET",
                 "url": "/guilds/{guild.id}/channels",
-                "description": "channel",
+                "description": "",
+                "responseNote": "Returns a list of guild channel objects.",
+                "responseTypes": [
+                    {
+                        "name": "channel",
+                        "type": "Array<channel/channel>"
+                    }
+                ],
                 "parameters": {
                     "guild.id": {
                         "type": "snowflake",
