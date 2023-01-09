@@ -2034,7 +2034,14 @@
                 "name": "Create Channel Invite",
                 "method": "POST",
                 "url": "/channels/{channel.id}/invites",
-                "description": "invite",
+                "description": "Create a new invite object for the channel. Only usable for guild channels. Requires the CREATE_INSTANT_INVITE permission. All JSON parameters for this route are optional, however the request body is not. If you are not sending any fields, you still have to send an empty JSON object ({}).",
+                "responseNote": "Returns an invite object.",
+                "responseTypes": [
+                    {
+                        "name": "invite",
+                        "type": "invite/invite"
+                    }
+                ],
                 "parameters": {
                     "channel.id": {
                         "type": "snowflake",
