@@ -290,7 +290,14 @@
                 "name": "Create Guild Channel",
                 "method": "POST",
                 "url": "/guilds/{guild.id}/channels",
-                "description": "channel",
+                "description": "Create a new channel object for the guild. Requires the MANAGE_CHANNELS permission.  Fires a Channel Create Gateway event.",
+                "responseNote": "Returns the new channel object on success.",
+                "responseTypes": [
+                    {
+                        "name": "channel",
+                        "type": "channel/channel"
+                    }
+                ],
                 "parameters": {
                     "guild.id": {
                         "type": "snowflake",
